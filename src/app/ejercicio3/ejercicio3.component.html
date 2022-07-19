@@ -10,9 +10,18 @@
     </div>
     <div class="row justify-content-center">
         <h1 class="d-inline" style="text-align: center">Marvel Heores</h1>
-        <button class=" d-inline btn btn-outline-primary text-center" (click)="open(content)">Agregar nuevo
-            Héroe</button>
 
+
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-12">
+            <input type="text" class="form-control" (input)="buscar()" [(ngModel)]="filtroBuscar"
+                placeholder="Buscar por nombre...">
+        </div>
+        <div class="col-lg-6 col-12 text-end">
+            <button class="  btn btn-outline-primary text-center" (click)="open(content)">Agregar nuevo
+                Héroe</button>
+        </div>
     </div>
 
     <div class="row mt-4">

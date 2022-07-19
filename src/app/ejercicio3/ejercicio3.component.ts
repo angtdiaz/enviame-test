@@ -12,6 +12,7 @@ export class Ejercicio3Component implements OnInit {
   heroes: any[] = []
   offset = 0
   hero: any = { edit: false }
+  filtroBuscar: string = ""
   constructor(private requestServe: RequestService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -75,6 +76,12 @@ export class Ejercicio3Component implements OnInit {
     }
     this.modalService.dismissAll()
 
+  }
+  async buscar() {
+    const response = await this.requestServe.getInfoByName(this.filtroBuscar) as any
+    if (response[0]) {
+      this.heroes = response[1].results
+    }
   }
 }
 

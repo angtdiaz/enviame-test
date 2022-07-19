@@ -29,6 +29,24 @@ export class RequestService {
         });
     }
 
+    async getInfoByName(name: string) {
+        let params = new HttpParams
+        params = params.append("nameStartsWith", name)
+
+        return new Promise((resolve) => {
+            this.http
+                .get(`${environment.apiUrl}`, { params })
+                .subscribe(
+                    (response: any) => {
+                        resolve([true, response.data]);
+                    },
+                    (error: any) => {
+                        resolve([false]);
+                    }
+                );
+        });
+    }
+
 }
 
 
