@@ -5,16 +5,17 @@
 </div>
 
 <div class="container" infiniteScroll [infiniteScrollDistance]="2" (scrolled)="onScroll()">
-    <div>
-        <h1 style="text-align: center">Marvel Heores</h1>
+    <div class="row">
+
+    </div>
+    <div class="row justify-content-center">
+        <h1 class="d-inline" style="text-align: center">Marvel Heores</h1>
+        <button class=" d-inline btn btn-outline-primary text-center" (click)="open(content)">Agregar nuevo
+            Héroe</button>
+
     </div>
 
-    <div class="row">
-        <div class="col-12">
-
-        </div>
-    </div>
-    <div class="row">
+    <div class="row mt-4">
         <div class="col-md-6" *ngFor="let hero of heroes;let i =index">
             <div class="card mb-3 border-secondary">
                 <div class="row g-0">
@@ -26,7 +27,7 @@
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">{{hero.name}}</h5>
-                            <p class="card-text"> {{hero.description}}.</p>
+                            <p class="card-text"> {{hero.description}}</p>
                             <p class="card-text"><small class="text-muted"> Modificado por última vez: {{hero.modified |
                                     date:
                                     'dd/MM/yyyy'}}</small>
@@ -62,7 +63,7 @@
                                 [src]="hero.thumbnail.path+'.'+hero.thumbnail.extension" class="img-fluid rounded-start"
                                 alt="...">
                             <img *ngIf="hero.imgEdit" style="max-height: 300px;" [src]="hero.thumbnail.path"
-                                class="img-fluid rounded-start" alt="...">
+                                class="img-fluid rounded-start" alt="No hay imagen">
                         </div>
                         <div class="row">
                             <div class="col-12">

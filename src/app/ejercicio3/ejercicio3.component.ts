@@ -29,11 +29,24 @@ export class Ejercicio3Component implements OnInit {
     this.getInfo()
   }
 
-  open(content: any, heroIndex: any) {
-    const heroTmp = Object.assign({}, this.heroes[heroIndex])
+  open(content: any, heroIndex: any = null) {
+    if (heroIndex) {
+      const heroTmp = Object.assign({}, this.heroes[heroIndex])
+      this.hero = heroTmp
+      this.hero.index = heroIndex
+      this.hero.edit = true
+    } else {
+      this.hero = {}
+      this.hero.edit = false
+      this.hero.name = ""
+      this.hero.description = ""
+      this.hero.thumbnail = {
+        path: ""
+      }
+      this.hero.imgEdit = true
 
-    if (heroIndex) this.hero = heroTmp
-    this.hero.index = heroIndex
+    }
+
     const modal = this.modalService.open(content, { size: "md" });
 
   }
@@ -55,8 +68,13 @@ export class Ejercicio3Component implements OnInit {
   }
   guardar() {
     this.hero.modified = moment()
-    this.heroes[this.hero.index] = this.hero
+    if (this.hero.edit) {
+      this.heroes[this.hero.index] = this.hero
+    } else {
+      this.heroes.unshift(this.hero)
+    }
     this.modalService.dismissAll()
+
   }
 }
 
