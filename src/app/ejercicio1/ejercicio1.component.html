@@ -1,0 +1,52 @@
+<div class="card">
+    <div class="card-body text-center p-2">
+        <h5>Ejercicio #1</h5>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="row ms-lg-5">
+            <div class="col-lg-6 col-sm-6 text-center">
+                <label for="vinical">Valor Inicial: </label>
+                <input type="text" name="vinicial" placeholder="Ej: 1" [(ngModel)]="vinicial" pattern="^[0-9]*$"
+                    #uinicial="ngModel">
+                <div *ngIf="uinicial.errors?.['pattern']" class="text-danger">
+                    Ingrese un entero positivo válido
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-6 text-center">
+                <label for="vfinal">Valor Final: </label>
+                <input type="text" name="vfinal" placeholder="Ej: 11" [(ngModel)]="vfinal" pattern="^[0-9]*$"
+                    #ufinal="ngModel">
+                <div *ngIf="ufinal.errors?.['pattern']" class="text-danger">
+                    Ingrese un entero positivo válido
+                </div>
+            </div>
+
+        </div>
+        <div class="row mt-lg-5 text-center">
+            <div class="col-lg-12 col-sm-12">
+                <button class="btn btn-outline-dark" (click)="calcularPrimos()">Calcular</button>
+            </div>
+        </div>
+        <div class="row mt-lg-4 text-center">
+            <div class="col-lg-12 col-sm-12">
+                <label for="result">Resultado: </label>
+
+            </div>
+            <textarea name="result" readonly [(ngModel)]="resultado" rows="4" cols="50"></textarea>
+
+        </div>
+        <div class="row mt-lg-5 ms-5">
+            <div class="col-lg-12 text-lg-start">
+                <h5 class="text-danger">Recuerde:</h5>
+            </div>
+        </div>
+        <div class="row mt-lg-2 ms-lg-5">
+            <div class="col-lg-12 text-lg-start">
+                <h6>En matemáticas, un número primo es un número natural mayor que 1 que tiene únicamente dos
+                    divisores positivos distintos: él mismo y el 1</h6>
+            </div>
+        </div>
+    </div>
+</div>
